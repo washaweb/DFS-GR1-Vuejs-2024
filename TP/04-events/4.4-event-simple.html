@@ -9,14 +9,34 @@
   <div id="app">
     <h1>Les événements en VueJS</h1>
 
+    <!-- changer la couleur de fond du tire au survol -->
     <h2>Au survol</h2>
-    <p>survolez moi</p>
+    <!-- ici on applique un style dynamique basé sur la variable bgColor qui s'applique en arrière plan, on écoute 2 événements : 
+     mouseenter et mouseleave qui mettent à jour la valeur de la couleur d'arrière plan bgColor -->
+    <p
+      :style="'background-color:' + bgColor" 
+      @mouseenter="bgColor='red'"
+      @mouseleave="bgColor='white'"
+    >
+      survolez moi
+    </p>
 
     <h2>Dans les formulaires</h2>
     <p>
       <label>
         formulaire exemple
-        <input class="form-control" type="text" value="text exemple">
+        <!-- Pour faire coincider la valeur et la saisir d'un champ de formulaire, on doit faire 2 choses: transmettre la valeur de la donnée dans la vue avec un binding sur :value et écouter l'événement @input du champ de saisie :
+        <input @input="text = $event.target.value"  :value="text" class="form-control" type="text" name="nom"> 
+        Dans cet exemple, on récupère la valeur (target.value) du champ de saisie à traver l'objet $event. On redonne cette valeur au champ de saisie avec l'attribut dynamique :value="text"
+
+        On peut simplifier ce fonctionnement en utilisant simplement v-model="text"
+        on parle de data-binding bi-directionnel, çad : 
+        contrôleur -> vue
+        et
+        vue -> contrôleur
+        -->
+        <input v-model="text" class="form-control" type="text" name="nom">
+        Saisie utilisateur: {{ text }}
       </label>
     </p>
     
@@ -26,8 +46,9 @@
       click dans le template : {{count}}
     </button>
 
-    <button @click="onClickBtn()">
-      Click depuis le contrôleur
+    <!-- les méthodes sont déclarées dans le contrôleur, dans la partie methods: {} -->
+    <button @click="onDecrementCount()">
+      Décrémente depuis le contrôleur
     </button>
   </div>
   <script type="module" src="JS/app-event-simple.js"></script>

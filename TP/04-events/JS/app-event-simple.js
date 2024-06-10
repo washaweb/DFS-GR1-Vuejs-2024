@@ -5,12 +5,15 @@ createApp({
   data() {
     return {
       count: 0,
-      text: "Exemple de texte"
+      text: "John Doe",
+      bgColor: 'white',
     }
   },
+  // les methodes accessibles dans la vue doivent être déclarées ici :
   methods: {
-    onClickBtn(){
-
+    onDecrementCount() {
+      // dans une déclaration de méthode, on doit faire références aux variables de datas avec le mot-clé 'this'
+      this.count--
     }
   }
 }).mount('#app')
