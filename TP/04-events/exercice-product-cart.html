@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Events en vue</title>
+</head>
+<body>
+  <div id="app">
+    <h1>Exercice cart Product</h1>
+
+    <img 
+    @mousenter="productImg='https://picsum.photos/200/300?image=1'"
+    @mousleave="productImg='https://picsum.photos/200/300?image=0'"
+    :src="productImg"
+    alt="image produit">
+    <p>Cart: ({{cart}})</p>
+
+    <button :disabled="cart >= 10" @click="cart++">Ajouter au panier</button>
+
+    <!-- exercice:
+     
+      Au survol de l'image, je souhaite afficher une image alternative du produit: 
+      https://picsum.photos/200/300?image=1
+      et remettre l'image d'origine lorsque je quitte le survol:
+      https://picsum.photos/200/300?image=0
+
+      Au clic sur le bouton ajouter au panier,
+      Je souhaite incrémenter la variable cart, qu'il faudra afficher dans la ligne du paragraphe <p>Cart: ([ici])</p>
+
+      BONUS: si le cart atteint 10 produits, bloquer l'incrémentation et afficher la phrase "stock épuisé", puis mettre le texte du paragraphe Cart en rouge, désactiver le bouton "Ajouter au panier"
+    -->
+  </div>
+  <script type="module" src="JS/exercice-product-cart-correction.js"></script>
+</body>
+</html>
