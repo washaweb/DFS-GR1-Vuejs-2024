@@ -1,0 +1,36 @@
+/* ecrire vos style ici */
+
+/* surclasser les styles ci-dessous 
+   avec les couleurs suivantes :
+	
+	1) #li1 en bleu 
+    2) #li2 en gris
+    3) #li3 en vert
+    4) #li4 en noir
+	5) #li5 en rouge
+    6) #li6 en violet
+*/
+
+ul li {
+	color: blue;
+}
+
+body div ul li#li2 {
+	color: gray;
+}
+
+div li.liste {
+	color: green;
+}
+
+div ul .liste + li {
+	color: black;
+}
+
+#li5 {
+	color: red !important;
+}
+
+ul > li#li6 {
+	color: purple;
+}

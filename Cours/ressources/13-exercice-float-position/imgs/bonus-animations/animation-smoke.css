@@ -1,0 +1,19 @@
+.smoke {
+  width: 362px;
+  height: 422px; /* <--  taille d'une seule image de l'animation, vous pouvez le régler selon vos besoins */
+  background-image: url('@/assets/sprites/smoke.webp'); /* <-- url to spritesheet */
+  animation: smoke-anim 2s steps(24) infinite; /* <-- animation */
+  mix-blend-mode: screen; /* rendu en supperposition des autres images pour l'effet de transparence */
+  opacity: 0.8; /* transparence supplémentaire */
+}
+
+/* keyframe animation en CSS pour la fumée */
+
+@keyframes smoke-anim {
+  from {
+    background-position: -1px -1px;
+  }
+  to {
+    background-position: -8689px -1px;
+  } /* <-- width of spritesheet*/
+}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>TP surclasse de classe</title>
+	<style>
+		/* Exercice : 
+			surchargez les styles ci-dessous 
+			avec les couleurs suivantes :
+			
+			1. #li1 en bleu 
+			2. #li2 en gris
+			3. #li3 en vert
+			4. #li4 en noir
+			5. #li5 en rouge
+			6. #li6 en violet
+
+			Attention, vous ne devez pas toucher au code HTML, ni au code CSS pré-existant.
+			l'utilisation du `!important` est interdite, sauf dans un des cas.
+
+		*/
+
+		/* ecrire vos style ici */
+
+
+
+
+		
+		/** ne plus rien modifier en dessous **/
+		li {
+			color: green;
+		}
+
+		div ul li#li2 {
+			color: red;
+		}
+
+		div .liste {
+			color: blue;
+		}
+
+		div .liste + li {
+			color: gray;
+		}
+
+		ul > #li6 {
+			color: orange;
+		}
+	</style>
+	
+</head>
+<body>
+	<h1>Surclassez ces éléments !</h1>
+	<div>
+		<ul>
+			<li id="li1">Element 1</li>
+			<li id="li2">Element 2</li>
+			<li id="li3" class="liste">Element 3</li>
+			<li id="li4">Element 4</li>
+			<li id="li5" style="color: purple">Element 5</li>
+			<li id="li6">Element 6</li>
+		</ul>
+	</div>
+</body>
+</html>

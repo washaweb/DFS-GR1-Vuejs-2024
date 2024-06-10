@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercice Train</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: url('exercice-train.jpg') no-repeat 50% 0/1440px auto; /* enlever cette image de référence quand l'exercice est fini */
+    }
+
+    .scene {
+      position: relative;
+      margin: 0px auto;
+      width: 1440px;
+      height: 967px;
+      overflow: hidden; /* sert à masquer tout ce qui dépasse de l'élément, comme un masque */
+      background-color: rgba(255,255,255,.35); /* enever cet effet d'opacité quand l'exercice est fini */
+    }
+
+    /* exemple avec le train */
+    .train {
+      position: absolute;
+      bottom: 72px;
+      left: -2100px;
+      background: url('imgs/train.png') no-repeat;
+      width: 3061px;
+      height: 274px;
+    }
+    .sun {
+      background-color: rgb(250 249 216 / 50%);
+      width: 300px;
+      height: 300px;
+      position: absolute;
+      top: -9px;
+      left: 640px;
+      border-radius: 60%;
+    }
+    /* comme le train, continuer à placer le plus fidèlement possible, les éléments de l'illustration dans le code HTML et dans la css, pour reproduire la scène */
+
+  </style>
+</head>
+<body>
+  <main class="scene">
+    <div class="sun"></div>
+    <div class="train"></div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercice Blast</title>
+  <!-- Exercice :
+    reproduire l'image ci-jointe en code HTML:
+    exercice-todo.png
+
+    Voici quelques indications de style :
+    - Image d'arrière-plan: img/carousel_hero_576w_x2.webp
+    - Images des flèches: img/arrow-left.svg, img/arrow-right.svg
+    - Polices disponibles dans le dossier fonts/
+      - Police du titre : Graphik-Bold 36px, hauteur de ligne : 43px
+      - Police des métas (actualité + date) : Graphik-Regular 14px, hauteur de ligne : 24px
+      -interlettrage général de .5px
+    - arrière-plan date + catégorie (jaune): #ffed3b
+
+    
+    /* AIDE
+    /*****************************/
+    Indication pour le souligné du titre h2 :
+    
+    afin d'obtenir l'effet de souligné mot-à-mot du titre,
+    voici le code que vous devez utiliser, 
+    en plus des décoration d'arrière-plan et de padding... 
+    */
+
+    .slide h2 {
+      display: inline; /* rend le titre comme un span */
+      background: #fff; /* affecte la couleur d'arrière plan */
+      padding-left: 0.5rem; /* espace le titre à gauche */
+      padding-right: 0.5rem; /* espace le titre à droit e*/
+      -webkit-box-decoration-break: clone; /* répartit le débordement sur chaque ligne (safari et chrome) */
+      -moz-box-decoration-break: clone; /* répartit le débordement sur chaque ligne (firefox) */
+      box-decoration-break: clone; /* répartit le débordement sur chaque ligne (css3 standard pas encore implémenté) */
+    }
+  -->
+  
+  <style>
+    /* global reset */
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+    }
+    
+    /* définition des polices de caractère */
+    @font-face {
+      font-family: 'Graphik';
+      src: url('fonts/graphik/Graphik-Bold-Web.woff2');
+      font-weight: 700;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'Graphik';
+      src: url('fonts/graphik/Graphik-Regular-Web.woff2');
+      font-weight: 400;
+      font-style: normal;
+    }
+    
+    /* définition du slider */
+
+    .slider {
+      position: relative;
+      margin: 0px auto;
+      width: 1100px;
+    }
+
+    /* définition de la slide */
+    .slide {
+      margin: 0px auto;
+      width: 1100px;
+      height: 630px;
+      padding: 368px 20px 10px 600px;
+      /* background: url('exercice-todo.png') no-repeat left top/auto 100%; */
+      background: url('img/carousel_hero_576w_x2.webp') no-repeat;
+    }
+
+    /* définition de la typographie */
+
+    .slide h2 {
+      font-family: 'Graphik', sans-serif;
+      display: inline;
+      font-size: 36px;
+      line-height: 43px;
+      letter-spacing: .5px;
+      padding-left: .5rem;
+      padding-right: .5rem;
+      background: #fff;
+      -webkit-box-decoration-break: clone;
+      -moz-box-decoration-break: clone;
+      box-decoration-break: clone;
+    }
+
+    .slide .metas span, .slide .metas time {
+      font-family: 'Graphik', sans-serif;
+      font-weight: 400;
+      font-size: 15px;
+      line-height: 24px;
+      display: inline-block;
+      border: 1px solid #000;
+      background-color: #ffed3b;
+      padding: 1px 10px;
+      letter-spacing: .5px;
+    }
+
+    .slide .metas span {
+      border-bottom: none;
+    }
+
+    /* définition des flèches */
+    .arrow-left, .arrow-right {
+      position: absolute;
+      top: calc(50% - 24px);
+      width: 48px;
+      height: 48px;
+      border: 1px solid #000;
+      cursor: pointer;
+    }
+    .arrow-left {
+      left: -24px;
+      background: #fff url('img/arrow-left.svg') no-repeat center center/30px auto;
+    }
+    .arrow-right {
+      right: -24px;
+      background: #fff url('img/arrow-right.svg') no-repeat center center/30px auto;
+    }
+    .arrow-left:hover, .arrow-right:hover,
+    .arrow-left:focus, .arrow-right:focus {
+      background-color: #ffed3b;
+    }
+
+    /* progress bar */
+    .progress-bar {
+      border: 1px solid #000;
+      background-color: #fff;
+      height: 8px;
+    }
+    .progress-bar .progress {
+      border: 1px solid #000;
+      background-color: #000;
+      height: 8px;
+      width: 30%;
+      /* en bonus, on anime :-) */
+      animation: fillanim 5s linear infinite;
+    }
+
+    /* ici on décrit l'animation avec des étapes */
+    @keyframes fillanim {
+      0% {
+        width: 0;
+      }
+      100% {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  
+
+  <div class="slider">
+    
+    <div class="slide">
+      <h2>Dissolution des Soulèvement de la Terre&nbsp;: une décision qui fera jurisprudence</h2>
+      <p class="metas">
+        <span>Actualités</span><br>
+        <time datetime="2023-10-30">30.10.2023</time>
+      </p>
+    </div>
+
+    <div class="arrow-left"></div>
+    <div class="arrow-right"></div>
+    
+    <div class="progress-bar">
+      <div class="progress"></div>
+    </div>
+  </div>
+</body>
+</html>

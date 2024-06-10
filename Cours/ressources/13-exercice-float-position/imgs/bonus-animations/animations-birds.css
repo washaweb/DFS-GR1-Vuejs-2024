@@ -1,0 +1,32 @@
+.bird-1 {
+  background: url('/animations/bird-anim-1.png') no-repeat 0 0/640px 54px;
+  animation: birds-anim-1 1s steps(8) infinite; /* animation */
+  width: 80px;
+  height: 54px;
+}
+
+.bird-2 {
+  background: url('/animations/bird-anim-2.png') no-repeat 0 0/610px 36px;
+  animation: birds-anim-2 1s steps(8) infinite; /* animation */
+  width: 76px;
+  height: 36px;
+}
+
+
+@keyframes birds-anim-1 {
+  from {
+    background-position: -1px -1px;
+  }
+  to {
+    background-position: -640px -1px;
+  } /* <-- largeur du spritesheet*/
+}
+
+@keyframes birds-anim-2 {
+  from {
+    background-position: 0px 0px;
+  }
+  to {
+    background-position: -640px 0px;
+  } /* <-- largeur du spritesheet*/
+}

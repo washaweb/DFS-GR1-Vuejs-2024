@@ -1,0 +1,40 @@
+.card-container, .card-front, .card-back {
+    width  : 320px;
+    height : 427px;
+}
+.card-container {
+    perspective     : 1000px;
+    transform-style : preserve-3d;
+    border          : 1px solid #ccc;
+}
+.card {    
+    transition              : 0.6s;
+    transform-style         : preserve-3d;
+    position                : relative;
+    cursor: crosshair;
+}
+.card-front, .card-back {
+    -webkit-backface-visibility : hidden;
+    backface-visibility         : hidden;
+    transition                  : 0.6s;
+    transform-style             : preserve-3d;
+    transform                   : rotateY(0deg);
+    position                    : absolute;
+    top                         : 0;
+    left                        : 0;
+}
+.card-front {
+    background : lightgreen;
+    z-index    : 2;
+    transform  : rotateY(0deg);
+}
+.card-back {
+    background : lightblue;
+    transform  : rotateY(-180deg);
+}
+.card-container:hover .card-front {
+    transform : rotateY(180deg);
+}
+.card-container:hover .card-back {
+    transform : rotateY(0deg);
+}

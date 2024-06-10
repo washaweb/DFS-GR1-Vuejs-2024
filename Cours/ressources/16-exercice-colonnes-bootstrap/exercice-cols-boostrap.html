@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap exercice cols</title>
+  
+    
+    <!-- Ennoncé
+    * Insérer les css et scripts de bootstrap dans ce document
+    * En utilisant la grille de Bootstrap, créez une mise en page responsive
+      avec un conteneur en largeur fixe.
+    * Reproduire l'image modèle `preview-exercice-cols-bootstrap.png` qui se trouve dans le dossier de cet exercice.
+      
+      - Dans ce conteneur : 2 colonne de largeurs égales, dans ces colonne,
+      - Dans la première colonne du conteneur : ajouter un paragraphe avec le texte colonne 1, puis ajouter 3 sous colonnes de largeur égales, dans ces sous-colonnes, ajouter les textes sous-colonne 1, sous-colonne 2, et sous-colonne 3
+      - Dans la deuxième colonne du conteneur : ajouter un paragraphe avec le texte colonne 2, puis ajouter 1 colonne. Cette colonne devra être décalée de la moitié de la largeur dont elle dispose (elle fait donc en largeur: la moitié de la colonne qui la contient), dans cette sous-colonne, ajouter le texte sous-colonne 4.
+
+    * Attention, vous devez respecter les exemples pour rendre votre design responsive en suivant les shémas indiqués : 
+      - Sur mobile, inverser l'ordre des contenus et mettre toutes les colonnes en pleine largeur.
+      - Sur Tablette, modifer les espaces et les largeurs des sous-colonnes comme indiqué sur l'image modèle
+    -->
+
+    <!-- insérer la CSS de Boostrap ici -->
+    
+    <!-- ATTENTION, ne pas toucher à ces styles qui vous permettront de voir les colonnes -->
+    <style>
+      :root{
+        --spacer: 20px;
+      }
+      body {
+        text-align: center;
+      }
+      div {
+        outline: 1px solid #5fac5f80;
+      }
+
+      [class*='container'] {
+        background-color: #feb5f580;
+        padding-top: var(--spacer);
+        padding-bottom: var(--spacer);
+      }
+      [class*='col-'] {
+        background-color: #b6bdfa;
+        min-height: calc(var(--spacer) * 10);
+        padding-top: var(--spacer);
+        padding-bottom: var(--spacer);
+        margin-top: var(--spacer);
+        margin-bottom: var(--spacer);
+      }
+      [class*='col-'] [class*='col-'] {
+        background-color: #8fded3;
+      }
+    </style>
+  </head>
+  <body>
+    
+    <!-- insérer votre code HTML/et le JS de Bootstrap ici -->
+  </body>
+</html>

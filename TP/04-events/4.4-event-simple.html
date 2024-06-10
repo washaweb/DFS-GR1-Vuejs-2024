@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Events en vue</title>
+</head>
+<body>
+  <div id="app">
+    <h1>Les événements en VueJS</h1>
+
+    <h2>Au survol</h2>
+    <p>survolez moi</p>
+
+    <h2>Dans les formulaires</h2>
+    <p>
+      <label>
+        formulaire exemple
+        <input class="form-control" type="text" value="text exemple">
+      </label>
+    </p>
+    
+    <h2>Sur des boutons</h2>
+    <!-- instruction directe dans le template -->
+    <button @click="count++">
+      click dans le template : {{count}}
+    </button>
+
+    <button @click="onClickBtn()">
+      Click depuis le contrôleur
+    </button>
+  </div>
+  <script type="module" src="JS/app-event-simple.js"></script>
+</body>
+</html>

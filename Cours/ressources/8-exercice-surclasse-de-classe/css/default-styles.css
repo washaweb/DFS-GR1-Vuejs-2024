@@ -1,0 +1,20 @@
+/** ne plus rien modifier en dessous **/
+li {
+  color: green;
+}
+
+div ul li#li2 {
+  color: red;
+}
+
+div .liste {
+  color: blue;
+}
+
+div .liste + li {
+  color: gray;
+}
+
+ul > #li6 {
+  color: orange;
+}
