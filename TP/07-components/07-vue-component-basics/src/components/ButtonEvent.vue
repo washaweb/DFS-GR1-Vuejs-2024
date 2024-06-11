@@ -8,6 +8,8 @@
 
 <script>
 export default {
+  // on doit déclarer les événements personnalisés utilisé, tout comme les props :
+  emits: ['onUpdateMessage'],
   data() {
     return {
       message: ''
@@ -15,7 +17,8 @@ export default {
   },
   methods: {
     onUpdateEvent() {
-      alert(this.message)
+      // on emmet un événement personnalisé pour communiquer avec le composant parent, celui-ci devra "écouter" l'événement onUpdateMessage pour réagir à la donnée transmise
+      this.$emit('onUpdateMessage', this.message)
     }
   }
 }

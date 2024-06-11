@@ -6,7 +6,7 @@
     <CounterButton />
     <h2>Exemple d'événement depuis un composant</h2>
 
-    <ButtonEvent />
+    <ButtonEvent @onUpdateMessage="onDisplayMessage" />
 
     <h2>Liste de billets de blog exemple</h2>
 
@@ -77,6 +77,15 @@ export default {
           description: 'autre texte exemple...'
         }
       ]
+    }
+  },
+  methods: {
+    // message est passé en paramètre de l'émetteur onUpdateMessage, qui déclenche la fonction onDisplayMessage
+    onDisplayMessage(message) {
+      console.log(
+        'depuis app.vue je récupère le message qui vient du comoosant ButtonEvent:',
+        message
+      )
     }
   }
 }
