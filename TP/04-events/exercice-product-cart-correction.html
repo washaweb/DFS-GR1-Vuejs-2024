@@ -4,15 +4,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Events en vue</title>
+  <style>
+    .text-danger {
+      color: red;
+    }
+  </style>
 </head>
 <body>
   <div id="app">
     <h1>Exercice cart Product</h1>
 
-    <img src="https://picsum.photos/200/300?image=0" alt="image produit">
-    <p>Cart: (0)</p>
+    <img
+      @mouseenter="productImg='https://picsum.photos/200/300?image=1'"
+      @mouseleave="productImg='https://picsum.photos/200/300?image=0'"
+     :src="productImg" alt="image produit">
+    <p :class="{ 'text-danger': cart >= 10 }">Cart: ({{ cart }})</p>
+    <p v-if="cart >= 10">Stock épuisé</p>
+    <button :disabled="cart>=10" @click="cart++">Ajouter au panier</button>
 
-    <button>Ajouter au panier</button>
 
     <!-- exercice:
      

@@ -9,6 +9,4 @@ createApp({
     }
   },
   // les methodes accessibles dans la vue doivent être déclarées ici :
-  methods: {
-  }
 }).mount('#app')

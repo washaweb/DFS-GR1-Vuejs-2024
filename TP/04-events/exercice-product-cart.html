@@ -9,14 +9,10 @@
   <div id="app">
     <h1>Exercice cart Product</h1>
 
-    <img 
-    @mousenter="productImg='https://picsum.photos/200/300?image=1'"
-    @mousleave="productImg='https://picsum.photos/200/300?image=0'"
-    :src="productImg"
-    alt="image produit">
-    <p>Cart: ({{cart}})</p>
+    <img src="https://picsum.photos/200/300?image=0" alt="image produit">
+    <p>Cart: (0)</p>
 
-    <button :disabled="cart >= 10" @click="cart++">Ajouter au panier</button>
+    <button>Ajouter au panier</button>
 
     <!-- exercice:
      
@@ -31,6 +27,5 @@
       BONUS: si le cart atteint 10 produits, bloquer l'incrémentation et afficher la phrase "stock épuisé", puis mettre le texte du paragraphe Cart en rouge, désactiver le bouton "Ajouter au panier"
     -->
   </div>
-  <script type="module" src="JS/exercice-product-cart-correction.js"></script>
 </body>
 </html>
