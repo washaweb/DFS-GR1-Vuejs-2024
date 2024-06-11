@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Events en vue</title>
+  <style>
+    .text-danger {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <h1>Computed properties</h1>
+    
+    <h2>Exemple 1: nom complet </h2>
+    <p>
+      <label for="firstname">Votre prénom:</label>
+      <input type="text" v-model="firstname" name="firstname" id="firstname">
+    </p>
+    <p>
+      <label for="lastname">Votre nom:</label>
+      <input type="text" v-model="lastname" name="lastname" id="lastname">
+    </p>
+    <p>Vous vous appelez : <br>
+      computed: {{ fullName }} <br>
+      methode: {{ getFullName() }}
+    </p>
+    <p v-if="superHero"><strong>Vous êtes un Super Hero !!!</strong></p>
+
+    <h2>Exemple 2 : cart</h2>
+    <!-- l'utilisation d'un computed outOfStock permet de mettre en cache le résultat du test this.cart >= 10 -->
+    <p :class="{ 'text-danger': outOfStock }">Cart: ({{ cart }})</p>
+    <p v-if="outOfStock">Stock épuisé</p>
+    <button :disabled="outOfStock" @click="cart++">Ajouter au panier</button>
+  </div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
