@@ -4,6 +4,9 @@
     <CounterButton />
     <CounterButton />
     <CounterButton />
+    <h2>Exemple d'événement depuis un composant</h2>
+
+    <ButtonEvent />
 
     <h2>Liste de billets de blog exemple</h2>
 
@@ -43,6 +46,7 @@
 <script>
 // on importe le composant depuis le dossier src => @
 import BlogPostItem from '@/components/BlogPostItem.vue'
+import ButtonEvent from '@/components/ButtonEvent.vue'
 import CounterButton from '@/components/CounterButton.vue'
 import SimpleCard from '@/components/SimpleCard.vue'
 
@@ -51,7 +55,8 @@ export default {
   components: {
     CounterButton,
     BlogPostItem,
-    SimpleCard
+    SimpleCard,
+    ButtonEvent
   },
   data() {
     return {
