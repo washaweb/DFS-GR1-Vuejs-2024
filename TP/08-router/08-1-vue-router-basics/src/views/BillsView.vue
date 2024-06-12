@@ -34,17 +34,33 @@
     <pre>
       {{ bills }}
     </pre>
+
+    <!-- on peut passer des paramètres dans les router-links : -->
+
+    <!-- <RouterLink :to="`/edit-bill/${bills[0].id}`">Lien test vers la bill avec l'id 1</RouterLink>
+    <RouterLink to="/edit-bill/3">Lien test vers la bill avec l'id 1</RouterLink>
+    <RouterLink
+      :to="{
+        name: 'edit-bill',
+        params: {
+          id: 2
+        }
+      }"
+      >Lien test vers la bill avec l'id 1</RouterLink
+    > -->
   </div>
 </template>
 
 <script>
+import { RouterLink } from 'vue-router'
 import TableList from '@/components/TableList/TableList.vue'
 import BillTableRow from '@/components/TableList/BillTableRow.vue'
 import { bills } from '@/seeds/bills.js'
 export default {
   components: {
     TableList,
-    BillTableRow
+    BillTableRow,
+    RouterLink
   },
   data() {
     return {
@@ -54,6 +70,15 @@ export default {
   methods: {
     onEditBill(bill) {
       console.log('edit bill with id: ', bill.id)
+      // je change de page programmatiquement avec le $router
+      this.$router.push({
+        name: 'edit-bill',
+        params: {
+          id: bill.id
+        }
+      })
+      // autre syntaxe en utilisant le path (dynamique)
+      // this.$router.push({ path: `/edit-bill/${bill.id}`  })
     },
     onDeleteBill(bill) {
       // on recherche l'index de la facture à supprimer, et on retourne un nouveau tableau de bills sans celle-ci

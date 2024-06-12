@@ -13,9 +13,9 @@
           <li class="nav-item">
             <RouterLink class="nav-link" aria-current="page" to="/bills">Bills</RouterLink>
           </li>
-          <li class="nav-item">
-            <RouterLink class="nav-link" aria-current="page" to="/edit-bill">Edit</RouterLink>
-          </li>
+          <!-- <li class="nav-item">
+            <RouterLink class="nav-link" aria-current="page" to="/clients">Clients</RouterLink>
+          </li> -->
           <li class="nav-item">
             <RouterLink class="nav-link" aria-current="page" to="/create-bill">Create</RouterLink>
           </li>

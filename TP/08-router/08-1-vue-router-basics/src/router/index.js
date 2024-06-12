@@ -16,8 +16,17 @@ const router = createRouter({
       name: 'bills',
       component: () => import('../views/BillsView.vue')
     },
+    // l'ordre de déclaration des routes est important,
+    // car c'est l'ordre dans lequel les routes sont testées
+    // il faut toujours déclarer les routes les plus générales en premier, et de plus en plus précis
     {
       path: '/edit-bill',
+      redirect: '/create-bill'
+    },
+    // ici on déclare une route dynamique avec un paramètre :id
+    {
+      path: '/edit-bill/:id',
+      props: true, //sert à récupérer les paramètres sous la forme de props dans le composant de la vue
       name: 'edit-bill',
       component: () => import('../views/EditBillView.vue')
     },
