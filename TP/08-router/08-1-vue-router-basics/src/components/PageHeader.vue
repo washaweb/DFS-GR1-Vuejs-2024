@@ -1,0 +1,37 @@
+<template>
+  <header>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <RouterLink class="navbar-brand" to="/">BILL APP</RouterLink>
+
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <RouterLink class="nav-link" aria-current="page" to="/">Home</RouterLink>
+          </li>
+          <li class="nav-item">
+            <RouterLink class="nav-link" aria-current="page" to="/bills">Bills</RouterLink>
+          </li>
+          <li class="nav-item">
+            <RouterLink class="nav-link" aria-current="page" to="/edit-bill">Edit</RouterLink>
+          </li>
+          <li class="nav-item">
+            <RouterLink class="nav-link" aria-current="page" to="/create-bill">Create</RouterLink>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+</template>
+
+<script>
+// imort du composant de lien depuis vue-router
+import { RouterLink } from 'vue-router'
+
+export default {
+  components: {
+    RouterLink
+  }
+}
+</script>
+
+<style scoped></style>
