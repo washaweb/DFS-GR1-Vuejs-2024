@@ -13,34 +13,24 @@
       </div>
     </div>
 
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th>Description</th>
-          <th>Client</th>
-          <th class="text-end">Prix HT</th>
-          <th class="text-end">Prix TTC</th>
-          <th class="text-end">Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="align-middle">Date</td>
-          <td class="align-middle">Description</td>
-          <td class="align-middle">Client</td>
-          <td class="align-middle text-end">Prix HT</td>
-          <td class="align-middle text-end">Prix TTC</td>
-          <td class="align-middle d-flex gap-2 justify-content-end align-items-center">
-            <button class="btn btn-outline-danger">
-              <i class="fa-solid fa-trash me-2" />Supprimer
-            </button>
-            <button class="btn btn-outline-info"><i class="fa-solid fa-pen me-2" />Editer</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-
+    <TableList>
+      <!-- exemple pour personnaliser les th du tableau TableList : -->
+      <!-- <template #thead>
+        <th>test</th>
+        <th>test</th>
+        <th>test</th>
+        <th>test</th>
+        <th>test</th>
+        <th>test</th>
+      </template> -->
+      <BillTableRow
+        v-for="bill in bills"
+        :key="bill.id"
+        :bill="bill"
+        @edit="onEditBill($event)"
+        @delete="onDeleteBill($event)"
+      />
+    </TableList>
     <pre>
       {{ bills }}
     </pre>
@@ -48,11 +38,26 @@
 </template>
 
 <script>
+import TableList from '@/components/TableList/TableList.vue'
+import BillTableRow from '@/components/TableList/BillTableRow.vue'
 import { bills } from '@/seeds/bills.js'
 export default {
+  components: {
+    TableList,
+    BillTableRow
+  },
   data() {
     return {
       bills
+    }
+  },
+  methods: {
+    onEditBill(bill) {
+      console.log('edit bill with id: ', bill.id)
+    },
+    onDeleteBill(bill) {
+      // on recherche l'index de la facture à supprimer, et on retourne un nouveau tableau de bills sans celle-ci
+      this.bills = this.bills.filter((b) => b.id !== bill.id)
     }
   }
 }
