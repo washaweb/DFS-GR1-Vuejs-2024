@@ -9,7 +9,7 @@
 
     <PageHeader />
 
-    <div class="border p-4 rounded">
+    <div class="border p-4 rounded-bottom shadow bg-white">
       <RouterView />
     </div>
   </div>

@@ -2,6 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 
 const router = createRouter({
+  linkActiveClass: 'active text-primary border-bottom border-primary',
+  linkExactActiveClass: 'active text-primary border-bottom border-primary border-3',
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {

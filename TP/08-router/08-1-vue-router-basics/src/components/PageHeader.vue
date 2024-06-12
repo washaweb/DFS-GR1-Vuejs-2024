@@ -1,8 +1,10 @@
 <template>
-  <header>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <header class="shadow">
+    <nav class="navbar navbar-expand-lg bg-white">
       <div class="container-fluid">
-        <RouterLink class="navbar-brand" to="/">BILL APP</RouterLink>
+        <RouterLink class="navbar-brand" activeClass="" exactActiveClass="" to="/"
+          >BILL APP</RouterLink
+        >
 
         <ul class="navbar-nav">
           <li class="nav-item">
