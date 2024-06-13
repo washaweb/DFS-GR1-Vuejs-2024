@@ -19,6 +19,7 @@
           class="form-control"
           placeholder="Prestation"
           v-model="form.description"
+          :class="{ 'is-invalid': !form.description }"
         />
         <label for="prestation" class="form-label">Prestation</label>
       </div>
@@ -34,6 +35,7 @@
           class="form-control"
           placeholder="quantity"
           v-model="form.qty"
+          :class="{ 'is-invalid': !form.qty }"
         />
         <label for="quantity" class="form-label">Quantité</label>
       </div>
@@ -48,6 +50,7 @@
           class="form-control"
           placeholder="amount-ht"
           v-model="form.price"
+          :class="{ 'is-invalid': !form.price }"
         />
         <label for="amount-ht" class="form-label">Montant U.</label>
       </div>

@@ -23,6 +23,7 @@
             v-model="bill.billnum"
             class="form-control"
             placeholder="Facture N°"
+            :class="{ 'is-invalid': !bill.billnum }"
           />
           <label for="billnum" class="form-label">Facture N°</label>
         </div>
@@ -35,6 +36,7 @@
             placeholder="Date"
             format="yyyy-MM-dd"
             v-model="bill.date"
+            :class="{ 'is-invalid': !bill.date }"
           />
           <label for="date" class="form-label">Émise le</label>
         </div>
@@ -65,6 +67,7 @@
             class="form-control"
             placeholder="Description"
             v-model="bill.description"
+            :class="{ 'is-invalid': !bill.description }"
           />
           <label for="description" class="form-label">Description</label>
         </div>
@@ -179,7 +182,7 @@
     </TableList>
 
     <p class="text-end">
-      <button class="btn btn-outline-primary btn-lg px-5">
+      <button :disabled="formInvalid" class="btn btn-outline-primary btn-lg px-5">
         <i class="fa-solid fa-save me-2" />Enregistrer
       </button>
     </p>
@@ -211,6 +214,11 @@ export default {
     return {
       bill: {},
       clients
+    }
+  },
+  computed: {
+    formInvalid() {
+      return !this.bill.client || !this.bill.billnum || !this.bill.date || !this.bill.description
     }
   },
   mounted() {
