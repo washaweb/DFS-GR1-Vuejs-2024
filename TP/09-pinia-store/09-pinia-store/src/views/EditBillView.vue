@@ -1,5 +1,5 @@
 <template>
-  <div v-if="bill && bill.id">
+  <div v-if="bill">
     <!-- titre et bouton ajouter -->
     <div class="row border-bottom pb-3 mb-3">
       <div class="col">
@@ -281,12 +281,11 @@
 <script>
 // import PrestationTableRow from '@/components/TableList/PrestationTableRow.vue'
 import TableList from '@/components/TableList/TableList.vue'
-import { bills } from '@/seeds/bills.js'
 import { clients } from '@/seeds/clients.js'
 // on importe le store
-import { useBillStore } from '@/stores/bill'
+import { useBillStore } from '@/stores/bill.js'
 // on importe les actions de pinia
-import { mapActions } from 'pinia'
+import { mapActions, mapWritableState } from 'pinia'
 
 const prestationInterface = {
   description: '',
@@ -307,48 +306,57 @@ export default {
   },
   data() {
     return {
-      bill: {},
       clients
     }
   },
   computed: {
+    ...mapWritableState(useBillStore, ['bill']),
     formInvalid() {
-      return !this.bill.client || !this.bill.billnum || !this.bill.date || !this.bill.description
+      return (
+        !this.bill ||
+        !this.bill.client ||
+        !this.bill.billnum ||
+        !this.bill.date ||
+        !this.bill.description
+      )
     },
     totalRow() {
       return (index) => {
-        const prestation = this.bill.prestations[index]
-        return prestation.qty * prestation.price
+        if (this.bill) {
+          const prestation = this.bill.prestations[index]
+          return prestation.qty * prestation.price
+        }
       }
     }
   },
   mounted() {
-    this.bill = bills.find((bill) => bill.id == this.id)
+    // charge les données de la facture à éditer
+    this.setBill(this.id)
   },
   methods: {
     // on déclare l'action ou les actions du store que l'on souhaite utiliser
-    ...mapActions(useBillStore, ['onDeleteBill', 'onUpdateBill']),
+    ...mapActions(useBillStore, ['onDeleteBill', 'onUpdateBill', 'setBill']),
 
     onAddPrestation(index) {
       // ajout d'une prestation sous l'élément courant dans le tableau
       this.bill.prestations.splice(index, 0, { ...prestationInterface })
     },
     onRemovePrestation(index) {
-      console.log(index)
       // suppression d'une prestation
-      //
       this.bill.prestations.splice(index, 1)
     },
     updateTotal() {
-      this.bill.totalHT = 0
-      for (const prestation of this.bill.prestations) {
-        this.bill.totalHT += prestation.qty * prestation.price
+      if (this.bill) {
+        this.bill.totalHT = 0
+        for (const prestation of this.bill.prestations) {
+          this.bill.totalHT += prestation.qty * prestation.price
+        }
+        this.bill.totalTTC =
+          this.bill.totalHT +
+          (this.bill.totalHT * this.bill.tva) / 100 -
+          this.bill.discount -
+          this.bill.paid
       }
-      this.bill.totalTTC =
-        this.bill.totalHT +
-        (this.bill.totalHT * this.bill.tva) / 100 -
-        this.bill.discount -
-        this.bill.paid
     },
 
     // soumission du formulaire d'édition
