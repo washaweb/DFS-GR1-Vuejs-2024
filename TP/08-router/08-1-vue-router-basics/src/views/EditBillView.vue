@@ -6,7 +6,7 @@
         <h1 class="h3"><i class="fa-solid fa-angle-down me-2" />Editer une facture</h1>
       </div>
       <div class="col text-end">
-        <button class="btn btn-outline-danger">
+        <button @click="onDeleteBill(bill.id)" class="btn btn-outline-danger">
           <i class="fa-solid fa-trash me-2" />
           Supprimer la facture
         </button>
@@ -332,9 +332,6 @@ export default {
       //
       this.bill.prestations.splice(index, 1)
     },
-    submitForm() {
-      console.log(this.bill)
-    },
     updateTotal() {
       this.bill.totalHT = 0
       for (const prestation of this.bill.prestations) {
@@ -345,6 +342,15 @@ export default {
         (this.bill.totalHT * this.bill.tva) / 100 -
         this.bill.discount -
         this.bill.paid
+    },
+
+    // soumission du formulaire d'édition
+    submitForm() {
+      console.log(this.bill)
+    },
+    // suppression de la bill
+    onDeleteBill(id) {
+      console.log(id)
     }
   },
   watch: {
