@@ -52,15 +52,13 @@
 </template>
 
 <script>
-import { RouterLink } from 'vue-router'
-import TableList from '@/components/TableList/TableList.vue'
 import BillTableRow from '@/components/TableList/BillTableRow.vue'
+import TableList from '@/components/TableList/TableList.vue'
 import { bills } from '@/seeds/bills.js'
 export default {
   components: {
     TableList,
-    BillTableRow,
-    RouterLink
+    BillTableRow
   },
   data() {
     return {

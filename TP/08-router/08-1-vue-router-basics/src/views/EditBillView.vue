@@ -81,11 +81,16 @@
         <th class="th-montant-ht">Montant U. HT</th>
         <th class="th-montant-total">Montant Total</th>
       </template>
+
       <PrestationTableRow
         v-for="(prestation, index) in bill.prestations"
-        :key="index + '-' + prestation.price"
+        :key="index"
         :prestation="prestation"
+        @add="onAddPrestation(index)"
+        @remove="onRemovePrestation(index)"
+        @change="bill.prestations[index] = { ...$event }"
       />
+
       <tr>
         <th colspan="4" class="align-middle text-end">Remises</th>
         <td>
@@ -182,22 +187,30 @@
     </TableList>
 
     <p class="text-end">
-      <button :disabled="formInvalid" class="btn btn-outline-primary btn-lg px-5">
+      <button
+        @click="submitForm()"
+        :disabled="formInvalid"
+        class="btn btn-outline-primary btn-lg px-5"
+      >
         <i class="fa-solid fa-save me-2" />Enregistrer
       </button>
     </p>
     <!-- 1ère manière de récupérer des paramètres de la route : -->
-    <pre>{{ $route.params.id }}</pre>
-    <pre>{{ id }}</pre>
     <pre>{{ bill }}</pre>
   </div>
 </template>
 
 <script>
-import TableList from '@/components/TableList/TableList.vue'
 import PrestationTableRow from '@/components/TableList/PrestationTableRow.vue'
+import TableList from '@/components/TableList/TableList.vue'
 import { bills } from '@/seeds/bills.js'
 import { clients } from '@/seeds/clients.js'
+
+const prestationInterface = {
+  description: '',
+  price: 0,
+  qty: 1
+}
 
 export default {
   components: {
@@ -223,6 +236,44 @@ export default {
   },
   mounted() {
     this.bill = bills.find((bill) => bill.id == this.id)
+  },
+  methods: {
+    onAddPrestation(index) {
+      // ajout d'une prestation sous l'élément courant dans le tableau
+      this.bill.prestations.splice(index, 0, { ...prestationInterface })
+    },
+    onRemovePrestation(index) {
+      // suppression d'une prestation
+      this.bill.prestations.splice(index, 1)
+    },
+    submitForm() {
+      console.log(this.bill)
+    },
+    updateTotal() {
+      this.bill.totalHT = 0
+      for (const prestation of this.bill.prestations) {
+        this.bill.totalHT += prestation.qty * prestation.price
+      }
+      this.bill.totalTTC =
+        this.bill.totalHT +
+        (this.bill.totalHT * this.bill.tva) / 100 -
+        this.bill.discount -
+        this.bill.paid
+    }
+  },
+  watch: {
+    'bill.prestations': {
+      handler() {
+        this.updateTotal()
+      },
+      deep: true
+    },
+    'bill.discount'() {
+      this.updateTotal()
+    },
+    'bill.paid'() {
+      this.updateTotal()
+    }
   }
 }
 </script>

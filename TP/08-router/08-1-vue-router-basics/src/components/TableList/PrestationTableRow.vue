@@ -1,12 +1,12 @@
 <template>
   <tr v-if="form && form.price">
     <td class="align-middle">
-      <button class="btn text-body-tertiary">
+      <button @click="$emit('add')" class="btn text-body-tertiary">
         <i class="fa-solid fa-circle-plus" /><span class="visually-hidden"
           >Ajouter une prestation</span
         >
       </button>
-      <button class="btn text-danger">
+      <button @click="$emit('remove')" class="btn text-danger">
         <i class="fa-solid fa-trash" /><span class="visually-hidden">Supprimer une prestation</span>
       </button>
     </td>
@@ -65,6 +65,7 @@
           id="total-row"
           class="form-control"
           placeholder="total-row"
+          disabled
           :value="totalRow"
         />
         <label for="amount-ht" class="form-label">Montant Total</label>
@@ -81,6 +82,7 @@ export default {
       required: true
     }
   },
+  emits: ['change', 'add', 'remove'],
   data() {
     return {
       form: null
@@ -94,6 +96,18 @@ export default {
       // on pourrait pousser jusqu'à afficher une donnée formatée avec numeral.js (voir http://numeraljs.com/)
       return this.form.price * this.form.qty
     }
+  },
+  watch: {
+    form: {
+      handler(newPrestation) {
+        // console.log(newPrestation)
+        this.$emit('change', newPrestation)
+      },
+      deep: true
+    }
+    // "form.price": function(newValue) {
+    //   this.form.total = newValue * this.form.qty
+    // },
   }
 }
 </script>
