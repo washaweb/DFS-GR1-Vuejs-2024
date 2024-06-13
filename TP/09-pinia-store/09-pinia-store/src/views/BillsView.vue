@@ -55,7 +55,7 @@
 import BillTableRow from '@/components/TableList/BillTableRow.vue'
 import TableList from '@/components/TableList/TableList.vue'
 import { useBillStore } from '@/stores/bill.js'
-import { mapState } from 'pinia'
+import { mapActions, mapState } from 'pinia'
 
 export default {
   components: {
@@ -66,6 +66,7 @@ export default {
     ...mapState(useBillStore, ['bills'])
   },
   methods: {
+    ...mapActions(useBillStore, ['onDeleteBill']),
     onEditBill(bill) {
       console.log('edit bill with id: ', bill.id)
       // je change de page programmatiquement avec le $router
@@ -77,10 +78,6 @@ export default {
       })
       // autre syntaxe en utilisant le path (dynamique)
       // this.$router.push({ path: `/edit-bill/${bill.id}`  })
-    },
-    onDeleteBill(bill) {
-      // on recherche l'index de la facture à supprimer, et on retourne un nouveau tableau de bills sans celle-ci
-      this.bills = this.bills.filter((b) => b.id !== bill.id)
     }
   }
 }
