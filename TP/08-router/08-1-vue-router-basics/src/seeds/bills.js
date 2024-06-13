@@ -4,7 +4,7 @@ export const bills = [
     id: 1,
     billnum: 209345600,
     description: 'Création de site internet et hébergement',
-    date: '08/03/2023',
+    date: '2023-03-14',
     client: {
       idclient: 1,
       firstName: 'Marc',
@@ -38,7 +38,7 @@ export const bills = [
     id: 2,
     billnum: 209345601,
     description: 'Prestation de formation',
-    date: '15/03/2023',
+    date: '2023-03-15',
     client: {
       idclient: 2,
       firstName: 'Harry',
@@ -72,7 +72,7 @@ export const bills = [
     id: 3,
     billnum: 20945321,
     description: 'Création de site internet et hébergement',
-    date: '31/03/2023',
+    date: '2024-03-31',
     client: {
       idclient: 3,
       firstName: 'Luc',
