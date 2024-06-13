@@ -10,8 +10,8 @@
 </template>
 
 <script>
+import { useCounterStore } from '@/stores/counter.js'
 import { mapActions, mapState } from 'pinia'
-import { useCounterStore } from '../stores/counter.js'
 
 console.log(useCounterStore)
 export default {

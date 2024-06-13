@@ -54,16 +54,16 @@
 <script>
 import BillTableRow from '@/components/TableList/BillTableRow.vue'
 import TableList from '@/components/TableList/TableList.vue'
-import { bills } from '@/seeds/bills.js'
+import { useBillStore } from '@/stores/bill.js'
+import { mapState } from 'pinia'
+
 export default {
   components: {
     TableList,
     BillTableRow
   },
-  data() {
-    return {
-      bills
-    }
+  computed: {
+    ...mapState(useBillStore, ['bills'])
   },
   methods: {
     onEditBill(bill) {

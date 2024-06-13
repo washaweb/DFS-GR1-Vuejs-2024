@@ -11,8 +11,8 @@
 </template>
 
 <script>
+import { useCounterStore } from '@/stores/counter.js'
 import { mapActions, mapState, mapWritableState } from 'pinia'
-import { useCounterStore } from '../stores/counter.js'
 export default {
   computed: {
     ...mapState(useCounterStore, ['doubleCount']),
