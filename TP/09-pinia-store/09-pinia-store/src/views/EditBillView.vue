@@ -6,7 +6,7 @@
         <h1 class="h3"><i class="fa-solid fa-angle-down me-2" />Editer une facture</h1>
       </div>
       <div class="col text-end">
-        <button @click="onDeleteBill(bill.id)" class="btn btn-outline-danger">
+        <button @click="deleteBill(bill)" class="btn btn-outline-danger">
           <i class="fa-solid fa-trash me-2" />
           Supprimer la facture
         </button>
@@ -283,6 +283,10 @@
 import TableList from '@/components/TableList/TableList.vue'
 import { bills } from '@/seeds/bills.js'
 import { clients } from '@/seeds/clients.js'
+// on importe le store
+import { useBillStore } from '@/stores/bill'
+// on importe les actions de pinia
+import { mapActions } from 'pinia'
 
 const prestationInterface = {
   description: '',
@@ -322,6 +326,9 @@ export default {
     this.bill = bills.find((bill) => bill.id == this.id)
   },
   methods: {
+    // on déclare l'action ou les actions du store que l'on souhaite utiliser
+    ...mapActions(useBillStore, ['onDeleteBill', 'onUpdateBill']),
+
     onAddPrestation(index) {
       // ajout d'une prestation sous l'élément courant dans le tableau
       this.bill.prestations.splice(index, 0, { ...prestationInterface })
@@ -346,11 +353,18 @@ export default {
 
     // soumission du formulaire d'édition
     submitForm() {
-      console.log(this.bill)
+      // j'appelle la fonction pour mettre à jour une facture depuis le store
+      this.onUpdateBill(this.bill)
+      // puis je redirige l'utilisateur vers la page de liste
+      this.$router.push({ path: '/bills' })
     },
+
     // suppression de la bill
-    onDeleteBill(id) {
-      console.log(id)
+    deleteBill(bill) {
+      // j'appelle la fonction qui vient du store stores/bills.js onDeleteBill() déclarée dans les actions du store
+      this.onDeleteBill(bill)
+      // puis je redirige l'utilisateur vers la page de liste
+      this.$router.push({ path: '/bills' })
     }
   },
   watch: {
