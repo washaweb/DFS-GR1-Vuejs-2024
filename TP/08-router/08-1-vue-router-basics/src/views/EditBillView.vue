@@ -82,15 +82,93 @@
         <th class="th-montant-total">Montant Total</th>
       </template>
 
-      <PrestationTableRow
+      <!-- debut prestations -->
+
+      <!-- <PrestationTableRow
         v-for="(prestation, index) in bill.prestations"
         :key="index"
         :prestation="prestation"
         @add="onAddPrestation(index)"
         @remove="onRemovePrestation(index)"
         @change="bill.prestations[index] = { ...$event }"
-      />
+      /> -->
 
+      <tr v-for="(prestation, index) in bill.prestations" :key="index">
+        <td class="align-middle">
+          <button @click="onAddPrestation(index)" class="btn text-body-tertiary">
+            <i class="fa-solid fa-circle-plus" /><span class="visually-hidden"
+              >Ajouter une prestation</span
+            >
+          </button>
+          <button @click="onRemovePrestation(index)" class="btn text-danger">
+            <i class="fa-solid fa-trash" /><span class="visually-hidden"
+              >Supprimer une prestation</span
+            >
+          </button>
+        </td>
+        <td>
+          <div class="form-floating">
+            <input
+              type="text"
+              :name="'prestation-' + index"
+              :id="'prestation-' + index"
+              class="form-control"
+              placeholder="Prestation"
+              v-model="prestation.description"
+              :class="{ 'is-invalid': !prestation.description }"
+            />
+            <label :for="'prestation-' + index" class="form-label">Prestation</label>
+          </div>
+        </td>
+        <td>
+          <div class="form-floating">
+            <input
+              type="number"
+              min="0"
+              step="1"
+              :name="'quantity-' + index"
+              :id="'quantity-' + index"
+              class="form-control"
+              placeholder="quantity"
+              v-model="prestation.qty"
+              :class="{ 'is-invalid': !prestation.qty }"
+            />
+            <label :for="'quantity' + index" class="form-label">Quantité</label>
+          </div>
+        </td>
+        <td>
+          <div class="form-floating">
+            <input
+              type="number"
+              min="0"
+              :name="'amount-ht' + index"
+              :id="'amount-ht' + index"
+              class="form-control"
+              placeholder="amount-ht"
+              v-model="prestation.price"
+              :class="{ 'is-invalid': !prestation.price }"
+            />
+            <label :for="'amount-ht' + index" class="form-label">Montant U.</label>
+          </div>
+        </td>
+        <td>
+          <div class="form-floating">
+            <input
+              type="number"
+              min="0"
+              step="1"
+              name="total-row"
+              :id="'total-row' + index"
+              class="form-control"
+              placeholder="total-row"
+              disabled
+              :value="totalRow(index)"
+            />
+            <label :for="'amount-ht' + index" class="form-label">Montant Total</label>
+          </div>
+        </td>
+      </tr>
+      <!-- fin prestations -->
       <tr>
         <th colspan="4" class="align-middle text-end">Remises</th>
         <td>
@@ -201,7 +279,7 @@
 </template>
 
 <script>
-import PrestationTableRow from '@/components/TableList/PrestationTableRow.vue'
+// import PrestationTableRow from '@/components/TableList/PrestationTableRow.vue'
 import TableList from '@/components/TableList/TableList.vue'
 import { bills } from '@/seeds/bills.js'
 import { clients } from '@/seeds/clients.js'
@@ -214,7 +292,7 @@ const prestationInterface = {
 
 export default {
   components: {
-    PrestationTableRow,
+    // PrestationTableRow,
     TableList
   },
   props: {
@@ -232,6 +310,12 @@ export default {
   computed: {
     formInvalid() {
       return !this.bill.client || !this.bill.billnum || !this.bill.date || !this.bill.description
+    },
+    totalRow() {
+      return (index) => {
+        const prestation = this.bill.prestations[index]
+        return prestation.qty * prestation.price
+      }
     }
   },
   mounted() {
@@ -243,7 +327,9 @@ export default {
       this.bill.prestations.splice(index, 0, { ...prestationInterface })
     },
     onRemovePrestation(index) {
+      console.log(index)
       // suppression d'une prestation
+      //
       this.bill.prestations.splice(index, 1)
     },
     submitForm() {

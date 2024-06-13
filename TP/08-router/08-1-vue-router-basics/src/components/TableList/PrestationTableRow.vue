@@ -91,6 +91,7 @@ export default {
   mounted() {
     this.form = { ...this.prestation }
   },
+
   computed: {
     totalRow() {
       // on pourrait pousser jusqu'à afficher une donnée formatée avec numeral.js (voir http://numeraljs.com/)
