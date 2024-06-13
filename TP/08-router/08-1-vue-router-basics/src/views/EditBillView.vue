@@ -39,14 +39,20 @@
           <label for="date" class="form-label">Émise le</label>
         </div>
         <div class="form-floating mb-3">
-          <input
+          <select
             type="text"
             name="client"
             id="client"
             class="form-control"
             placeholder="Client"
             v-model="bill.client"
-          />
+            :class="{ 'is-invalid': !bill.client }"
+          >
+            <option value="">Veuillez choisir un client</option>
+            <option v-for="client in clients" :value="client" :key="client.idclient">
+              {{ client.firstName }} {{ client.lastName }}
+            </option>
+          </select>
           <label for="client" class="form-label">Client</label>
         </div>
       </div>
@@ -188,6 +194,7 @@
 import TableList from '@/components/TableList/TableList.vue'
 import PrestationTableRow from '@/components/TableList/PrestationTableRow.vue'
 import { bills } from '@/seeds/bills.js'
+import { clients } from '@/seeds/clients.js'
 
 export default {
   components: {
@@ -202,7 +209,8 @@ export default {
   },
   data() {
     return {
-      bill: {}
+      bill: {},
+      clients
     }
   },
   mounted() {
