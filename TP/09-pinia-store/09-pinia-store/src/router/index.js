@@ -28,12 +28,7 @@ const router = createRouter({
       path: '/edit-bill/:id',
       props: true, //sert à récupérer les paramètres sous la forme de props dans le composant de la vue
       name: 'edit-bill',
-      component: () => import('../views/EditBillView.vue')
-    },
-    {
-      path: '/create-bill',
-      name: 'create-bill',
-      component: () => import('../views/CreateBillView.vue')
+      component: () => import('../views/CreateEditBillView.vue')
     }
     // {
     //   path: '/about',

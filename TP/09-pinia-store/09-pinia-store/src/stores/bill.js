@@ -12,7 +12,29 @@ export const useBillStore = defineStore('bill', {
   actions: {
     // récupère une bill dans le store bill au moment de l'édition
     setBill(id) {
-      this.bill = this.bills.find((b) => b.id == id)
+      // si l'id est égal à -1, cela veut dire que l'on veut créer une nouvelle facture, donc on ne récupère pas de facture dans le store bill
+      this.bill =
+        id == '-1'
+          ? {
+              id: -1,
+              billnum: '',
+              description: '',
+              date: '',
+              client: {},
+              prestations: [
+                {
+                  description: '',
+                  qty: 1,
+                  price: 600.0
+                }
+              ],
+              discount: 0,
+              paid: 0,
+              totalHT: 0,
+              tva: 20,
+              totalTTC: 0
+            }
+          : this.bills.find((b) => b.id == id)
     },
     // recherche la facture correspondante dans le store, et enregistre les modifications
     onUpdateBill(bill) {

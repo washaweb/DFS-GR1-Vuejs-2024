@@ -6,10 +6,10 @@
         <h1 class="h3"><i class="fa-solid fa-angle-down me-2" />Liste des factures</h1>
       </div>
       <div class="col text-end">
-        <button class="btn btn-outline-primary">
+        <router-link to="/edit-bill/-1" class="btn btn-outline-primary">
           <i class="fa-solid fa-plus-circle me-2" />
           Ajouter une facture
-        </button>
+        </router-link>
       </div>
     </div>
 

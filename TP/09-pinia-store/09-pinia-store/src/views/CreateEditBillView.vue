@@ -3,9 +3,12 @@
     <!-- titre et bouton ajouter -->
     <div class="row border-bottom pb-3 mb-3">
       <div class="col">
-        <h1 class="h3"><i class="fa-solid fa-angle-down me-2" />Editer une facture</h1>
+        <h1 v-if="isNewBill" class="h3">
+          <i class="fa-solid fa-angle-down me-2" />Créer une facture
+        </h1>
+        <h1 v-else class="h3"><i class="fa-solid fa-angle-down me-2" />Editer une facture</h1>
       </div>
-      <div class="col text-end">
+      <div v-if="!isNewBill" class="col text-end">
         <button @click="deleteBill(bill)" class="btn btn-outline-danger">
           <i class="fa-solid fa-trash me-2" />
           Supprimer la facture
@@ -315,6 +318,12 @@ export default {
   },
   computed: {
     ...mapWritableState(useBillStore, ['bill']),
+
+    // test si c'est une nouvelle facture ou si on édite une facture existante
+    isNewBill() {
+      return this.id == '-1'
+    },
+
     formInvalid() {
       return (
         !this.bill ||
@@ -339,7 +348,7 @@ export default {
   },
   methods: {
     // on déclare l'action ou les actions du store que l'on souhaite utiliser
-    ...mapActions(useBillStore, ['onDeleteBill', 'onUpdateBill', 'setBill']),
+    ...mapActions(useBillStore, ['onDeleteBill', 'onUpdateBill', 'onCreateBill', 'setBill']),
 
     onAddPrestation(index) {
       // ajout d'une prestation sous l'élément courant dans le tableau
@@ -365,8 +374,13 @@ export default {
 
     // soumission du formulaire d'édition
     submitForm() {
-      // j'appelle la fonction pour mettre à jour une facture depuis le store
-      this.onUpdateBill(this.bill)
+      if (this.isNewBill) {
+        this.onCreateBill(this.bill)
+      } else {
+        // j'appelle la fonction pour mettre à jour une facture depuis le store
+        this.onUpdateBill(this.bill)
+      }
+
       // puis je redirige l'utilisateur vers la page de liste
       this.$router.push({ path: '/bills' })
     },
