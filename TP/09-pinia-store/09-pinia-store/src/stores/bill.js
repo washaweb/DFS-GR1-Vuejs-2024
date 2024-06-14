@@ -1,5 +1,8 @@
 import { bills } from '@/seeds/bills.js'
 import { defineStore } from 'pinia'
+// on a installé la librairie uuid avec npm i uuid afin de pouvoir l'utiliser ici
+import { v4 as uuidv4 } from 'uuid'
+
 export const useBillStore = defineStore('bill', {
   state: () => ({
     bills,
@@ -19,6 +22,12 @@ export const useBillStore = defineStore('bill', {
       this.bills[i] = { ...bill }
       // je vidange la donnée d'édition d'une bill
       this.bill = null
+    },
+
+    // Créer une nouvelle facture
+    onCreateBill(bill) {
+      // j'ajoute une nouvelle facture dans le tableau des bills, en ajoutant au passage un id unique grâce à la méthode importée uuidv4() depuis le package uuid
+      this.bills.push({ ...bill, id: uuidv4() })
     },
 
     onDeleteBill(bill) {

@@ -100,7 +100,11 @@
               >Ajouter une prestation</span
             >
           </button>
-          <button @click="onRemovePrestation(index)" class="btn text-danger">
+          <button
+            :disabled="bill.prestations.length === 1"
+            @click="onRemovePrestation(index)"
+            class="btn text-danger"
+          >
             <i class="fa-solid fa-trash" /><span class="visually-hidden"
               >Supprimer une prestation</span
             >
