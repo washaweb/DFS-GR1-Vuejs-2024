@@ -65,8 +65,15 @@ export default {
   computed: {
     ...mapState(useBillStore, ['bills'])
   },
+
+  // attention c'est une fonction asynchrone !!!!!
+  async mounted() {
+    // récupère les données de l'API
+    await this.getAllBills()
+  },
+
   methods: {
-    ...mapActions(useBillStore, ['onDeleteBill']),
+    ...mapActions(useBillStore, ['onDeleteBill', 'getAllBills']),
     onEditBill(bill) {
       console.log('edit bill with id: ', bill.id)
       // je change de page programmatiquement avec le $router
