@@ -1,0 +1,24 @@
+{
+  "name": "backend-billapp",
+  "version": "1.0.0",
+  "description": "un serveur express qui sert d'API pour notre application frontend en vuejs",
+  "main": "index.mjs",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "express",
+    "api",
+    "factures"
+  ],
+  "author": "Jerôme Poslednik <webmaster@washaweb.com>",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.3"
+  }
+}
