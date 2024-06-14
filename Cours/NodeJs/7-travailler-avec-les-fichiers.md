@@ -15,7 +15,8 @@ Vous l'appelez en passant un chemin de fichier, et une fois que Node.js obtient 
       console.error(err)
       return
     }
-    //we have access to the file stats in `stats`
+    //we access to the file stats in `stats`
+    console.log(stats)
   })
 ```
 
@@ -25,6 +26,7 @@ Node.js fournit également une méthode de synchronisation, qui bloque le thread
   const fs = require('fs')
   try {
     const stats = fs.statSync('/Users/joe/test.txt')
+    console.log(stats)
   } catch (err) {
     console.error(err)
   }

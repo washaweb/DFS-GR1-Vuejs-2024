@@ -1,0 +1,108 @@
+{
+    "_id": "921a4616-1e05-4cb5-9f78-9fc677afd177",
+    "colName": "BillApp",
+    "created": "2024-06-14T12:04:16.697Z",
+    "sortNum": 10000,
+    "folders": [
+        {
+            "_id": "c3611e27-2e4f-4bbd-afab-32f27c5cbaeb",
+            "name": "Bills",
+            "containerId": "",
+            "created": "2024-06-14T12:04:51.821Z",
+            "sortNum": 10000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "77a2052a-40d5-4bbb-a16e-b07f150ffbcf",
+            "colId": "921a4616-1e05-4cb5-9f78-9fc677afd177",
+            "containerId": "c3611e27-2e4f-4bbd-afab-32f27c5cbaeb",
+            "name": "/bills",
+            "url": "{{url}}/bills",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2024-06-14T12:05:08.632Z",
+            "modified": "2024-06-14T12:07:34.467Z",
+            "headers": []
+        },
+        {
+            "_id": "782abe43-a177-432a-ae3a-99a4eac13436",
+            "colId": "921a4616-1e05-4cb5-9f78-9fc677afd177",
+            "containerId": "c3611e27-2e4f-4bbd-afab-32f27c5cbaeb",
+            "name": "bills/:id",
+            "url": "{{url}}/bills/{id}",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2024-06-14T12:06:01.986Z",
+            "modified": "2024-06-14T12:09:27.503Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "1",
+                    "isPath": true
+                }
+            ]
+        },
+        {
+            "_id": "234348e1-2650-4345-aea5-d9041445638c",
+            "colId": "921a4616-1e05-4cb5-9f78-9fc677afd177",
+            "containerId": "c3611e27-2e4f-4bbd-afab-32f27c5cbaeb",
+            "name": "bills",
+            "url": "{{url}}/bills",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2024-06-14T12:06:11.736Z",
+            "modified": "2024-06-14T12:13:15.724Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"id\": -1,\n    \"billnum\": \"000000001\",\n    \"description\": \"Création de site internet et hébergement\",\n    \"date\": \"2024-06-14\",\n    \"client\": {\n      \"idclient\": 1,\n      \"firstName\": \"Marc\",\n      \"lastName\": \"Scout\",\n      \"companyName\": \"Lumon Industries\"\n    },\n    \"prestations\": [\n      {\n        \"description\": \"Etude graphique UX\",\n        \"qty\": 2,\n        \"price\": 450.0\n      },\n      {\n        \"description\": \"Création d’un site Wordpress\",\n        \"qty\": 5,\n        \"price\": 450.0\n      },\n      {\n        \"description\": \"Hébergement annuel\",\n        \"qty\": 1,\n        \"price\": 250.0\n      }\n    ],\n    \"discount\": 0.0,\n    \"paid\": 0.0,\n    \"totalHT\": 3400,\n    \"tva\": 20,\n    \"totalTTC\": 4080\n  }",
+                "form": []
+            }
+        },
+        {
+            "_id": "eb5d28f7-b9c5-4bd2-872a-7998d89c25aa",
+            "colId": "921a4616-1e05-4cb5-9f78-9fc677afd177",
+            "containerId": "c3611e27-2e4f-4bbd-afab-32f27c5cbaeb",
+            "name": "bills/",
+            "url": "{{url}}/bills/{id}",
+            "method": "PATCH",
+            "sortNum": 40000,
+            "created": "2024-06-14T12:06:25.335Z",
+            "modified": "2024-06-14T13:50:59.124Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "1",
+                    "isPath": true
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"description\": \"Description modiflée 2\",\n  \"date\": \"2024-01-02\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "9d54c555-3ed1-4e9c-bfbe-5d4ad07e231a",
+            "colId": "921a4616-1e05-4cb5-9f78-9fc677afd177",
+            "containerId": "c3611e27-2e4f-4bbd-afab-32f27c5cbaeb",
+            "name": "bills/:id",
+            "url": "{{url}}/bills/{id}",
+            "method": "DELETE",
+            "sortNum": 50000,
+            "created": "2024-06-14T12:06:39.633Z",
+            "modified": "2024-06-14T12:33:07.567Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "2",
+                    "isPath": true
+                }
+            ]
+        }
+    ]
+}

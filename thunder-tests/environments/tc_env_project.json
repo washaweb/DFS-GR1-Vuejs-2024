@@ -1,0 +1,14 @@
+{
+    "_id": "76b57454-d96f-40ce-8d36-9760d096efba",
+    "name": "project",
+    "default": true,
+    "sortNum": 10000,
+    "created": "2024-06-14T12:02:12.951Z",
+    "modified": "2024-06-14T12:02:12.951Z",
+    "data": [
+        {
+            "name": "url",
+            "value": "http://localhost:3000"
+        }
+    ]
+}

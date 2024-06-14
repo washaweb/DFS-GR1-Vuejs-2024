@@ -5,6 +5,8 @@ const cors = require('cors')
 const billRoutes = require('./routes/bills.js')
 
 const app = express()
+
+app.use(express.json()) // ici on définit que les body des requêtes seront automatiquement convertiens en format json dans nos contrôleurs de routes
 const port = 3000
 
 app.use(cors({

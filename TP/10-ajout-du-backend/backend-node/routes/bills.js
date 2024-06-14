@@ -1,19 +1,22 @@
 const express = require('express');
 const router = express.Router();
-const bills = require('../db/bills.js');
 
+const ctrl = require('../controllers/bills.js');
 
 // on déclare les routes de /bills, donc /bills correspond ici à /
-// ici toutes les bills
-router.get('/', (req, res) => {
-  res.json(bills)
-})
+// r&cupère toutes les factures
+router.get('/', ctrl.getAll)
 
-// ici une seule bill en fonction de son :id
-router.get('/:id', (req, res) => {
-  const id = parseInt(req.params.id)
-  const bill = bills.find(bill => bill.id == id);
-  res.json(bill)
-})
+// récupère une seule facture en fonction de son :id
+router.get('/:id', ctrl.getOne)
+
+// on crée une nouvelle facture
+router.post('/', ctrl.postOne)
+
+// on modifie une facture existante
+router.patch('/:id', ctrl.patchOne)
+
+// on supprime une facture
+router.delete('/:id', ctrl.deleteOne)
 
 module.exports = router;
