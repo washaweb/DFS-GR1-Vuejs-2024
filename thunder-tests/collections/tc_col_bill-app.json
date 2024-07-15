@@ -10,6 +10,13 @@
             "containerId": "",
             "created": "2024-06-14T12:04:51.821Z",
             "sortNum": 10000
+        },
+        {
+            "_id": "c81af70b-b939-4957-9095-c1462fff5d80",
+            "name": "Clients",
+            "containerId": "",
+            "created": "2024-07-12T12:56:27.355Z",
+            "sortNum": 20000
         }
     ],
     "requests": [
@@ -100,6 +107,97 @@
                 {
                     "name": "id",
                     "value": "2",
+                    "isPath": true
+                }
+            ]
+        },
+        {
+            "_id": "1831e06c-897a-4969-b5cd-a6ae07a3e8da",
+            "colId": "921a4616-1e05-4cb5-9f78-9fc677afd177",
+            "containerId": "c81af70b-b939-4957-9095-c1462fff5d80",
+            "name": "/clients",
+            "url": "{{url}}/clients",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2024-07-12T12:56:27.355Z",
+            "modified": "2024-07-12T12:57:09.072Z",
+            "headers": []
+        },
+        {
+            "_id": "4224fbc0-b89a-45b2-a9a1-4f0ae6d0020c",
+            "colId": "921a4616-1e05-4cb5-9f78-9fc677afd177",
+            "containerId": "c81af70b-b939-4957-9095-c1462fff5d80",
+            "name": "clients/:id",
+            "url": "{{url}}/clients/{id}",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2024-07-12T12:56:27.356Z",
+            "modified": "2024-07-12T13:52:39.616Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "1",
+                    "isPath": true
+                }
+            ]
+        },
+        {
+            "_id": "dad79aab-4339-4b9a-a7ad-afa3989ca797",
+            "colId": "921a4616-1e05-4cb5-9f78-9fc677afd177",
+            "containerId": "c81af70b-b939-4957-9095-c1462fff5d80",
+            "name": "clients",
+            "url": "{{url}}/clients",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2024-07-12T12:56:27.357Z",
+            "modified": "2024-07-12T12:59:32.109Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": " {\n    \"id\": \"-1\",\n    \"firstName\": \"Leia\",\n    \"lastName\": \"Skywalker\",\n    \"job\": \"Princesse\",\n    \"phone\": \"06 12 34 56 78\",\n    \"email\": \"leia.skywalker@gmail.com\",\n    \"company\": \"République\",\n    \"address1\": \"Hotel de la royauté\",\n    \"address2\": \"Coruscant\",\n    \"zipcode\": \"75000\",\n    \"city\": \"Coruscant\",\n    \"country\": \"FRANCE\",\n    \"dateAdded\": \"2024-03-31\"\n  }",
+                "form": []
+            }
+        },
+        {
+            "_id": "a8d84127-4688-4d72-8ee1-95b05a5e4a27",
+            "colId": "921a4616-1e05-4cb5-9f78-9fc677afd177",
+            "containerId": "c81af70b-b939-4957-9095-c1462fff5d80",
+            "name": "clients",
+            "url": "{{url}}/clients/{id}",
+            "method": "PATCH",
+            "sortNum": 40000,
+            "created": "2024-07-12T12:56:27.358Z",
+            "modified": "2024-07-12T13:00:11.754Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "15267dcb-48a1-44e7-80bf-490687f3f4cf",
+                    "isPath": true
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"job\": \"Jedi en devenir\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "729f1da1-5ac5-40a8-839c-fc9ef65da94d",
+            "colId": "921a4616-1e05-4cb5-9f78-9fc677afd177",
+            "containerId": "c81af70b-b939-4957-9095-c1462fff5d80",
+            "name": "clients/:id",
+            "url": "{{url}}/clients/{id}",
+            "method": "DELETE",
+            "sortNum": 50000,
+            "created": "2024-07-12T12:56:27.359Z",
+            "modified": "2024-07-12T13:00:35.342Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "15267dcb-48a1-44e7-80bf-490687f3f4cf",
                     "isPath": true
                 }
             ]
